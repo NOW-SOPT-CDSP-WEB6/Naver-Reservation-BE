@@ -1,7 +1,7 @@
 ---
 name: Issue Template
 about: '기능 개발 관련 이슈 '
-title: ex. [FEAT] 회원 등록 기능 개발
+title: ex. [FEAT] 회원 등록 기능
 labels: ''
 assignees: ''
 
