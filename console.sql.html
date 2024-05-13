@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>console.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde; font-style: italic;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #d19a66;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+console.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">drop table </span><span class="s1">member;</span>
+<span class="s0">create table </span><span class="s1">member(</span>
+    <span class="s1">id </span><span class="s0">integer primary key </span><span class="s1">,</span>
+    <span class="s0">name varchar not null</span>
+<span class="s1">);</span>
+<span class="s0">drop table </span><span class="s1">reservation;</span>
+<span class="s0">create table </span><span class="s1">reservation</span>
+<span class="s1">(</span>
+    <span class="s1">id               </span><span class="s0">SERIAL primary key</span><span class="s1">,</span>
+    <span class="s1">member_id        </span><span class="s0">INTEGER      not null</span><span class="s1">,</span>
+    <span class="s1">store_name       </span><span class="s0">varchar</span><span class="s1">(</span><span class="s2">200</span><span class="s1">) </span><span class="s0">not null</span><span class="s1">,</span>
+    <span class="s1">reservation_date </span><span class="s0">TIMESTAMP    not null</span><span class="s1">,</span>
+    <span class="s1">main_description </span><span class="s0">varchar</span><span class="s1">(</span><span class="s2">400</span><span class="s1">) </span><span class="s0">not null</span><span class="s1">,</span>
+    <span class="s1">sub_description  </span><span class="s0">varchar</span><span class="s1">(</span><span class="s2">200</span><span class="s1">),</span>
+    <span class="s1">review_status    </span><span class="s0">boolean</span><span class="s1">,</span>
+    <span class="s1">star_status      </span><span class="s0">boolean</span><span class="s1">,</span>
+    <span class="s0">CONSTRAINT </span><span class="s1">fk_member_id </span><span class="s0">FOREIGN KEY </span><span class="s1">(member_id) </span><span class="s0">REFERENCES </span><span class="s1">&quot;member&quot;(id)</span>
+<span class="s1">);</span>
+<span class="s0">drop table </span><span class="s1">review;</span>
+<span class="s0">create table </span><span class="s1">review</span>
+<span class="s1">(</span>
+    <span class="s1">id </span><span class="s0">serial primary key </span><span class="s1">,</span>
+    <span class="s1">member_id </span><span class="s0">serial not null </span><span class="s1">,</span>
+    <span class="s1">reservation_id </span><span class="s0">serial not null</span><span class="s1">,</span>
+    <span class="s1">created_at </span><span class="s0">TIMESTAMP not null</span><span class="s1">,</span>
+    <span class="s0">content VARCHAR</span><span class="s1">(</span><span class="s2">400</span><span class="s1">) </span><span class="s0">not null</span><span class="s1">,</span>
+    <span class="s0">CONSTRAINT </span><span class="s1">fk_member_id </span><span class="s0">FOREIGN KEY </span><span class="s1">(member_id) </span><span class="s0">REFERENCES </span><span class="s1">&quot;member&quot;(id),</span>
+    <span class="s0">Constraint </span><span class="s1">fk_reservation_id </span><span class="s0">foreign key </span><span class="s1">(reservation_id) </span><span class="s0">references </span><span class="s1">&quot;reservation&quot;(id)</span>
+<span class="s1">);</span>
+</pre>
+</body>
+</html>
