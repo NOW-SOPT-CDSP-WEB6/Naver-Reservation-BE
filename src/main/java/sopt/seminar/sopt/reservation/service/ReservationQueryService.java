@@ -12,6 +12,7 @@ import sopt.seminar.sopt.reservation.dto.response.ReservationCategorizedResponse
 import sopt.seminar.sopt.reservation.entity.Category;
 import sopt.seminar.sopt.reservation.entity.Reservation;
 import sopt.seminar.sopt.reservation.repository.ReservationJpaRepository;
+import sopt.seminar.sopt.store.entity.Store;
 
 @Service
 @RequiredArgsConstructor
@@ -43,4 +44,7 @@ public class ReservationQueryService {
     return reservationJpaRepository.findByMember(member);
   }
 
+  public List<Reservation> findReservationByStore(Store store) {
+    return reservationJpaRepository.findByStore(store);
+  }
 }
