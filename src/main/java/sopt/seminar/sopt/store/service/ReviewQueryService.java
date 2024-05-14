@@ -28,11 +28,11 @@ public class ReviewQueryService {
     Store store = findById(storeId);
 
     List<Reservation> reservationList = reservationQueryService.findReservationByStore(store);
-    List<ReviewResponse> reviewResponses = reservationList.stream().map(reservation ->
+    List<ReviewResponse> reviewResponses = reservationList.stream()
+        .filter(Reservation::isReviewStatus).map(reservation ->
             ReviewResponse.of(reservation.getMember().getName(), reservation.getCreatedAt(),
-                reservation.getContent()))
-        .collect(Collectors.toUnmodifiableList());
-
+                reservation.getContent())).collect(Collectors.toUnmodifiableList());
+    
     return ReviewSummaryResponse.of(reviewResponses.size(), reviewResponses);
   }
 
