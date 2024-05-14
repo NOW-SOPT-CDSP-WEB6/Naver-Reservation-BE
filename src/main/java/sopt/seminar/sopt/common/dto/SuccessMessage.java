@@ -1,6 +1,7 @@
 package sopt.seminar.sopt.common.dto;
 
 import java.util.Optional;
+import sopt.seminar.sopt.common.dto.response.statusEnum.SuccessStatus;
 
 public record SuccessMessage<T>(
 
@@ -9,11 +10,13 @@ public record SuccessMessage<T>(
     Optional<T> data
 ) {
 
-  public static <T> SuccessMessage<T> of(SuccessMessage successMessage) {
-    return new SuccessMessage(successMessage.status, successMessage.message, Optional.empty());
+  public static <T> SuccessMessage<T> of(SuccessStatus successStatus) {
+    return new SuccessMessage(successStatus.getStatus(), successStatus.getMessage(),
+        Optional.empty());
   }
 
-  public static <T> SuccessMessage<T> of(SuccessMessage successMessage, T data) {
-    return new SuccessMessage(successMessage.status, successMessage.message, Optional.of(data));
+  public static <T> SuccessMessage<T> of(SuccessStatus successStatus, T data) {
+    return new SuccessMessage(successStatus.getStatus(), successStatus.getMessage(),
+        Optional.of(data));
   }
 }
