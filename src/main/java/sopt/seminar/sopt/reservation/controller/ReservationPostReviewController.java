@@ -19,7 +19,7 @@ public class ReservationPostReviewController {
     @PostMapping("/review/{reservationId}")
     public ResponseEntity<?> postReview(@PathVariable Long reservationId, @RequestBody PostReviewDTO postReviewRequest){
         return ResponseEntity.status(HttpStatus.OK)
-                .body(SuccessMessage.of(SuccessStatus.SUCCESS_OK,
+                .body(SuccessMessage.of(SuccessStatus.SUCCESS_REVIEW,
                         reservationPostReviewService.postReview(reservationId,postReviewRequest)));
     }
 
