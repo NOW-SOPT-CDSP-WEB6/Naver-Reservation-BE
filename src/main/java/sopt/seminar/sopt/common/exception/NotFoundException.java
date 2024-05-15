@@ -11,5 +11,6 @@ public class NotFoundException extends BusinessException {
   public NotFoundException(
       ErrorMessage errorMessage) {
     super(errorMessage);
+    this.errorMessage = errorMessage;
   }
 }
