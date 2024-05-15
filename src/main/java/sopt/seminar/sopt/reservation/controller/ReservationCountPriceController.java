@@ -15,6 +15,13 @@ public class ReservationCountPriceController {
     private  final ReservationCountPriceService reservationCountPriceService;
 
 
+    @GetMapping("/reservations")
+    public ResponseEntity<?> getCountPriceByCategory(@RequestHeader Long memberId) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(SuccessMessage.of(SuccessStatus.SUCCESS_OK,
+                        reservationCountPriceService.getCountPriceByCategory(memberId, null)));
+    }
+
     @GetMapping("/reservations/{category}")
     public ResponseEntity<?> getCountPriceByCategory( @RequestHeader Long memberId,@PathVariable String category){
         return ResponseEntity.status(HttpStatus.OK)
