@@ -24,4 +24,16 @@ public class ReservationReadController {
         .body(SuccessMessage.of(SuccessStatus.SUCCESS_OK,
             reservationQueryService.queryCategorizedReservationList(memberId)));
   }
+
+
+
+
+
+
+
+
+
+
+
+
 }

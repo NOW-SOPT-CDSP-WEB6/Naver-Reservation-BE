@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://now-sopt-database.cbayyeqey3do.ap-northeast-2.rds.amazonaws.com:5432/soptnaver
-    username: sopt_naver
+    url:  jdbc:postgresql://localhost:5432/nulltest
+    username: sopt_naver_user
     password: 66666666
   jpa:
     show-sql: true
@@ -12,4 +12,5 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#
+#        dialect: org.hibernate.dialect.PostgreSQLDialect

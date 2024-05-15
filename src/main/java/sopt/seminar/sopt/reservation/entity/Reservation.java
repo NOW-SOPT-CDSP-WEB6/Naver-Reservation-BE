@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import sopt.seminar.sopt.common.baseEntity.BaseEntity;
 import sopt.seminar.sopt.member.entity.Member;
 import sopt.seminar.sopt.store.entity.Store;
@@ -18,6 +19,7 @@ import sopt.seminar.sopt.store.entity.Store;
 @Entity
 @NoArgsConstructor
 @Getter
+@Setter
 public class Reservation extends BaseEntity {
 
   @Id
