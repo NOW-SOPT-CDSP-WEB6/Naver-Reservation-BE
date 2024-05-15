@@ -42,7 +42,7 @@ public class Reservation extends BaseEntity {
   @Column(name = " sub_description")
   private String subDescription;
 
-  private int price;
+  private Integer price;
 
   private String category;
 
@@ -53,7 +53,7 @@ public class Reservation extends BaseEntity {
   private boolean starStatus;
 
   public Reservation(Member member, Store store, String content, String mainDescription,
-      String subDescription, int price, String category) {
+      String subDescription, Integer price, String category) {
     this.member = member;
     this.store = store;
     this.content = content;
