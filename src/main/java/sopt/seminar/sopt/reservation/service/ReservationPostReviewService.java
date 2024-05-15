@@ -24,6 +24,7 @@ public class ReservationPostReviewService {
     Reservation reservation = optionalReservation.get();
     // 요청에서 받은 데이터를 Reservation 엔티티의 content 속성에 저장
         reservation.setContent(postReviewRequest.getContent());
+        reservation.setStarStatus(!reservation.isReviewStatus());
 
     // 변경된 예약 정보를 저장
         reservationJpaRepository.save(reservation);
