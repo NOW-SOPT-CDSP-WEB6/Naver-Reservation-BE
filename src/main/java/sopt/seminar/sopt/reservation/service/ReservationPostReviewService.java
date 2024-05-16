@@ -18,19 +18,12 @@ public class ReservationPostReviewService {
     public boolean postReview(Long reservationId, PostReviewDTO postReviewRequest) {
 
         Reservation reservation = findByReservationId(reservationId);
-
-        // 내용(content) 변경
         reservation.updateContent(postReviewRequest.getContent());
-
-        // 리뷰 상태(reviewStatus) 변경 및 별점 상태(starStatus) 업데이트
         reservation.updateReviewStatus();
-
-        // 변경된 Reservation 저장
         reservationJpaRepository.save(reservation);
 
-        return true;
+        return reservation.isReviewStatus();
     }
-
 
     private Reservation findByReservationId(long reservationId) {
         return reservationJpaRepository.findById(reservationId).orElseThrow(
