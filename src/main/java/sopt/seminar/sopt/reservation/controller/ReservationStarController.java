@@ -22,7 +22,4 @@ public class ReservationStarController {
                     reservationStarService.changeStarStatus(reservationId)));
     }
 
-
-
-
 }

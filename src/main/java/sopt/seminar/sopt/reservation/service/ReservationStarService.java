@@ -16,14 +16,7 @@ public class ReservationStarService {
     private final ReservationJpaRepository reservationJpaRepository;
 
     public boolean changeStarStatus(Long reservationId) {
-
-
-
-
         Reservation reservation = findByReservationId(reservationId);
-
-
-
 
         reservation.setStarStatus(!reservation.isStarStatus()); // 토글 방식으로 변경
         reservationJpaRepository.save(reservation);

@@ -25,15 +25,4 @@ public class ReservationReadController {
             reservationQueryService.queryCategorizedReservationList(memberId)));
   }
 
-
-
-
-
-
-
-
-
-
-
-
 }
