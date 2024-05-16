@@ -29,13 +29,19 @@ public class ReservationQueryService {
 
     Map<String, List<ReservationCategorizedResponse>> categorizedResponseMap = new HashMap<>();
 
+    for (Category category : Category.values()) {
+      categorizedResponseMap.computeIfAbsent(category.getCategory(), i -> new ArrayList<>());
+    }
     for (Reservation reservation : reservationList) {
-      categorizedResponseMap.computeIfAbsent(reservation.getCategory(), k ->
-          new ArrayList<>()
-      ).add(ReservationCategorizedResponse.of(reservation.getId(), member.getName(),
-          reservation.getCategory(), reservation.getCreatedAt(),
-          reservation.getMainDescription(), reservation.getSubDescription(), reservation.getPrice(),
-          reservation.isReviewStatus(), reservation.isStarStatus()));
+      categorizedResponseMap.computeIfPresent(reservation.getCategory(), (key, list) ->
+      {
+        list.add(ReservationCategorizedResponse.of(reservation.getId(), member.getName(),
+            reservation.getCategory(), reservation.getCreatedAt(),
+            reservation.getMainDescription(), reservation.getSubDescription(),
+            reservation.getPrice(),
+            reservation.isReviewStatus(), reservation.isStarStatus()));
+        return list;
+      });
     }
     return categorizedResponseMap;
   }
