@@ -64,20 +64,17 @@ public class Reservation extends BaseEntity {
     this.starStatus = false;
   }
 
-
-  // 내용(content) 변경 메서드
   public void updateContent(String newContent) {
     this.content = newContent;
   }
 
-  // 리뷰 상태(reviewStatus) 변경 및 별점 상태(starStatus) 업데이트 메서드
+
   public void updateReviewStatus() {
-    this.reviewStatus = true; // 리뷰 상태를 true로 변경
+    this.reviewStatus = true;
   }
 
-
-
-
-
+  public void toggleStarStatus() {
+    this.starStatus = !this.starStatus;
+  }
 
 }

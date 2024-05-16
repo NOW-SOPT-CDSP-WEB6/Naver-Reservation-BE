@@ -18,7 +18,6 @@ public class ReservationCountPriceService {
 
     private final ReservationJpaRepository reservationJpaRepository;
 
-
     public Map<String, Object> getCountPriceByCategory(Long memberId, String category) {
         List<Reservation> reservations;
 
@@ -43,7 +42,5 @@ public class ReservationCountPriceService {
 
         return result;
     }
-
-
 
 }

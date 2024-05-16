@@ -30,5 +30,4 @@ public class ReservationPostReviewService {
                 () -> new NotFoundException(ErrorMessage.RESERVATION_NOT_FOUND)
         );
     }
-
 }
