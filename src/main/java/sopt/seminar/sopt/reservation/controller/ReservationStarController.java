@@ -21,5 +21,4 @@ public class ReservationStarController {
             .body(SuccessMessage.of(SuccessStatus.SUCCESS_STAR,
                     reservationStarService.changeStarStatus(reservationId)));
     }
-
 }

@@ -22,7 +22,4 @@ public class ReservationPostReviewController {
                 .body(SuccessMessage.of(SuccessStatus.SUCCESS_REVIEW,
                         reservationPostReviewService.postReview(reservationId,postReviewRequest)));
     }
-
-
-
 }
