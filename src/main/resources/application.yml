@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url:  jdbc:postgresql://localhost:5432/nulltest
+    url:  jdbc:postgresql://localhost:5432/test11
     username: sopt_naver_user
     password: 66666666
   jpa:

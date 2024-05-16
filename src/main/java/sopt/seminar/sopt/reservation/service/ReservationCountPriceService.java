@@ -18,7 +18,7 @@ public class ReservationCountPriceService {
 
     private final ReservationJpaRepository reservationJpaRepository;
 
-    public Map<String, Object> getCountPriceByCategory(Long memberId, String category) {
+    public Map<String, Integer> getCountPriceByCategory(Long memberId, String category) {
         List<Reservation> reservations;
 
         if (category != null && !category.isEmpty()) {
@@ -36,7 +36,7 @@ public class ReservationCountPriceService {
                 .mapToInt(reservation -> reservation.getPrice() != null ? reservation.getPrice() : 0)
                 .sum();
 
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Integer> result = new HashMap<>();
         result.put("count", count);
         result.put("totalPrice", total);
 
