@@ -18,7 +18,7 @@ public class ReservationStarService {
     public boolean changeStarStatus(Long reservationId) {
         Reservation reservation = findByReservationId(reservationId);
 
-        reservation.setStarStatus(!reservation.isStarStatus()); // 토글 방식으로 변경
+        reservation.updateReviewStatus(); // 토글 방식으로 변경
         reservationJpaRepository.save(reservation);
 
         return reservation.isStarStatus();

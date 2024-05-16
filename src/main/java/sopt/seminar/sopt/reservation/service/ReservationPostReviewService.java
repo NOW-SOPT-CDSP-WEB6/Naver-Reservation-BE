@@ -19,13 +19,17 @@ public class ReservationPostReviewService {
 
         Reservation reservation = findByReservationId(reservationId);
 
-        reservation.setContent(postReviewRequest.getContent());
-        reservation.setStarStatus(!reservation.isReviewStatus());
+        // 내용(content) 변경
+        reservation.updateContent(postReviewRequest.getContent());
 
+        // 리뷰 상태(reviewStatus) 변경 및 별점 상태(starStatus) 업데이트
+        reservation.updateReviewStatus();
+
+        // 변경된 Reservation 저장
         reservationJpaRepository.save(reservation);
 
         return true;
-}
+    }
 
 
     private Reservation findByReservationId(long reservationId) {

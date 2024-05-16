@@ -19,7 +19,6 @@ import sopt.seminar.sopt.store.entity.Store;
 @Entity
 @NoArgsConstructor
 @Getter
-@Setter
 public class Reservation extends BaseEntity {
 
   @Id
@@ -64,4 +63,21 @@ public class Reservation extends BaseEntity {
     this.reviewStatus = false;
     this.starStatus = false;
   }
+
+
+  // 내용(content) 변경 메서드
+  public void updateContent(String newContent) {
+    this.content = newContent;
+  }
+
+  // 리뷰 상태(reviewStatus) 변경 및 별점 상태(starStatus) 업데이트 메서드
+  public void updateReviewStatus() {
+    this.reviewStatus = true; // 리뷰 상태를 true로 변경
+  }
+
+
+
+
+
+
 }
