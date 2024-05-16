@@ -24,6 +24,10 @@ public class Member extends BaseEntity {
 
   private String name;
 
+  public Member(long memberId) {
+    this.id = memberId;
+  }
+
   @Builder
   public Member(String name) {
     this.name = name;

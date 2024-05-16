@@ -26,9 +26,9 @@ public class ReservationCountPriceService {
             reservations = reservationJpaRepository.findByMemberIdAndCategory(memberId, category);
         } else {
             // category 파라미터가 없을 경우 memberId에 해당하는 모든 예약을 가져옴
-            Member member = new Member();
-            member.setId(memberId);
+            Member member = new Member(memberId);
             reservations = reservationJpaRepository.findByMember(member);
+
         }
 
         int count = reservations.size();
