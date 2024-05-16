@@ -9,10 +9,12 @@ import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import sopt.seminar.sopt.common.baseEntity.BaseEntity;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 public class Member extends BaseEntity {
 
@@ -21,6 +23,10 @@ public class Member extends BaseEntity {
   private long id;
 
   private String name;
+
+  public Member(long memberId) {
+    this.id = memberId;
+  }
 
   @Builder
   public Member(String name) {

@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import sopt.seminar.sopt.common.baseEntity.BaseEntity;
 import sopt.seminar.sopt.member.entity.Member;
 import sopt.seminar.sopt.store.entity.Store;
@@ -40,7 +41,7 @@ public class Reservation extends BaseEntity {
   @Column(name = " sub_description")
   private String subDescription;
 
-  private int price;
+  private Integer price;
 
   private String category;
 
@@ -51,7 +52,7 @@ public class Reservation extends BaseEntity {
   private boolean starStatus;
 
   public Reservation(Member member, Store store, String content, String mainDescription,
-      String subDescription, int price, String category) {
+      String subDescription, Integer price, String category) {
     this.member = member;
     this.store = store;
     this.content = content;
@@ -62,4 +63,18 @@ public class Reservation extends BaseEntity {
     this.reviewStatus = false;
     this.starStatus = false;
   }
+
+  public void updateContent(String newContent) {
+    this.content = newContent;
+  }
+
+
+  public void updateReviewStatus() {
+    this.reviewStatus = true;
+  }
+
+  public void toggleStarStatus() {
+    this.starStatus = !this.starStatus;
+  }
+
 }
