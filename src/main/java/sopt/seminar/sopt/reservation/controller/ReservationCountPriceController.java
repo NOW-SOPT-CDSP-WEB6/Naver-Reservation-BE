@@ -14,7 +14,6 @@ import sopt.seminar.sopt.reservation.service.ReservationCountPriceService;
 public class ReservationCountPriceController {
     private  final ReservationCountPriceService reservationCountPriceService;
 
-
     @GetMapping("/reservations")
     public ResponseEntity<?> getCountPriceByCategory(@RequestHeader Long memberId) {
         return ResponseEntity.status(HttpStatus.OK)
@@ -28,8 +27,4 @@ public class ReservationCountPriceController {
                 .body(SuccessMessage.of(SuccessStatus.SUCCESS_OK,
                         reservationCountPriceService.getCountPriceByCategory(memberId,category)));
     }
-
-
-
-
 }
