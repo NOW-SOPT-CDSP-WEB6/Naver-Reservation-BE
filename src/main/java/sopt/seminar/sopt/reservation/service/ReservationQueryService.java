@@ -36,7 +36,7 @@ public class ReservationQueryService {
       categorizedResponseMap.computeIfPresent(reservation.getCategory(), (key, list) ->
       {
         list.add(ReservationCategorizedResponse.of(reservation.getId(), member.getName(),
-            reservation.getCategory(), reservation.getCreatedAt(),
+            reservation.getStore().getStoreName(), reservation.getCreatedAt(),
             reservation.getMainDescription(), reservation.getSubDescription(),
             reservation.getPrice(),
             reservation.isReviewStatus(), reservation.isStarStatus()));
