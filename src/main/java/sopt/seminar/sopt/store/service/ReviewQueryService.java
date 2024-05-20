@@ -28,6 +28,9 @@ public class ReviewQueryService {
     Store store = findById(storeId);
 
     List<Reservation> reservationList = reservationQueryService.findReservationByStore(store);
+
+    if(reservationList.isEmpty()) throw new NotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
+    
     List<ReviewResponse> reviewResponses = reservationList.stream()
         .filter(Reservation::isReviewStatus).map(reservation ->
             ReviewResponse.of(reservation.getMember().getName(), reservation.getCreatedAt(),
