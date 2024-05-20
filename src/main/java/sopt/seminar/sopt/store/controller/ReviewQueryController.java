@@ -21,7 +21,7 @@ public class ReviewQueryController {
   private final ReviewQueryService reviewQueryService;
 
   @GetMapping("/reviews/{storeId}")
-  public ResponseEntity<?> getStoreEveryReview(@PathVariable long storeId) {
+  public ResponseEntity<?> getStoreEveryReview(@PathVariable Long storeId) {
     return ResponseEntity.status(HttpStatus.OK)
         .body(SuccessMessage.of(SuccessStatus.SUCCESS_OK,
             reviewQueryService.queryStoreReview(storeId)));
