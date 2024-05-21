@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ReservationCategorizedResponse(
     Long reservationId,
+    String category,
     String userName,
     String storeName,
     LocalDateTime reservationDate,
@@ -19,6 +20,7 @@ public record ReservationCategorizedResponse(
 
   public static ReservationCategorizedResponse of(
       Long reservationId,
+      String category,
       String userName,
       String storeName,
       LocalDateTime reservationDate,
@@ -28,7 +30,7 @@ public record ReservationCategorizedResponse(
       boolean review,
       boolean starMark) {
 
-    return new ReservationCategorizedResponse(reservationId, userName, storeName, reservationDate,
+    return new ReservationCategorizedResponse(reservationId, category, userName, storeName, reservationDate,
         mainDescription, subDescription, price, review, starMark);
   }
 }
