@@ -7,13 +7,14 @@ import lombok.Getter;
 @Getter
 public enum Category {
 
-  뷰티("beauty"),
-  생활_클래스("life_class"),
-  식당_카페("restaurant_cafe"),
-  숙박("accommodation"),
-  스포츠_레저("sports_leisure"),
-  공연_전시("performance_exhibition"),
-  병의원("hospital"),
+  beauty("뷰티","beauty"),
+  life_class("생활/클래스","life_class"),
+  restaurant_cafe("식당/카페","restaurant_cafe"),
+  accommodation("숙박","accommodation"),
+  sports_leisure("스포츠/레저","sports_leisure"),
+  performance_exhibition("공연/전시","performance_exhibition"),
+  hospital("병의원","hospital"),
   ;
-  private final String category;
+  private final String korean;
+  private final String english;
 }

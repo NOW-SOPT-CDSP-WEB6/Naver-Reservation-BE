@@ -4,6 +4,8 @@ import static jakarta.persistence.GenerationType.*;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -43,7 +45,9 @@ public class Reservation extends BaseEntity {
 
   private Integer price;
 
-  private String category;
+  @Column(name = "category")
+  @Enumerated(EnumType.STRING)
+  private Category category;
 
   @Column(name = "review_status")
   private boolean reviewStatus;
@@ -52,7 +56,7 @@ public class Reservation extends BaseEntity {
   private boolean starStatus;
 
   public Reservation(Member member, Store store, String content, String mainDescription,
-      String subDescription, Integer price, String category) {
+      String subDescription, Integer price, Category category) {
     this.member = member;
     this.store = store;
     this.content = content;

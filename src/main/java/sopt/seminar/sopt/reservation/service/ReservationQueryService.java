@@ -27,7 +27,7 @@ public class ReservationQueryService {
 
     Member member = memberQueryService.findById(memberId);
     return findAllReservationByMember(member).stream().map(reservation ->
-        ReservationCategorizedResponse.of(reservation.getId(), reservation.getCategory(), member.getName(),
+        ReservationCategorizedResponse.of(reservation.getId(), reservation.getCategory().getKorean(), member.getName(),
             reservation.getStore().getStoreName(), reservation.getCreatedAt(),
             reservation.getMainDescription(), reservation.getSubDescription(),
             reservation.getPrice(),
