@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import sopt.seminar.sopt.member.entity.Member;
@@ -21,29 +22,17 @@ public class ReservationQueryService {
   private final ReservationJpaRepository reservationJpaRepository;
   private final MemberQueryService memberQueryService;
 
-  public Map<String, List<ReservationCategorizedResponse>> queryCategorizedReservationList(
+  public List<ReservationCategorizedResponse> queryCategorizedReservationList(
       long memberId) {
 
     Member member = memberQueryService.findById(memberId);
-    List<Reservation> reservationList = findAllReservationByMember(member);
-
-    Map<String, List<ReservationCategorizedResponse>> categorizedResponseMap = new HashMap<>();
-
-    for (Category category : Category.values()) {
-      categorizedResponseMap.computeIfAbsent(category.getCategory(), i -> new ArrayList<>());
-    }
-    for (Reservation reservation : reservationList) {
-      categorizedResponseMap.computeIfPresent(reservation.getCategory(), (key, list) ->
-      {
-        list.add(ReservationCategorizedResponse.of(reservation.getId(), member.getName(),
+    return findAllReservationByMember(member).stream().map(reservation ->
+        ReservationCategorizedResponse.of(reservation.getId(), reservation.getCategory(), member.getName(),
             reservation.getStore().getStoreName(), reservation.getCreatedAt(),
             reservation.getMainDescription(), reservation.getSubDescription(),
             reservation.getPrice(),
-            reservation.isReviewStatus(), reservation.isStarStatus()));
-        return list;
-      });
-    }
-    return categorizedResponseMap;
+            reservation.isReviewStatus(), reservation.isStarStatus()))
+        .collect(Collectors.toUnmodifiableList());
   }
 
   private List<Reservation> findAllReservationByMember(Member member) {
