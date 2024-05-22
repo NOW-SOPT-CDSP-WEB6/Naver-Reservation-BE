@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @Getter
 public enum ErrorMessage {
+  CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND.value(),"카테고리가 존재하지 않습니다."),
   MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "멤버가 존재하지 않습니다."),
   STORE_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "가게가 존재하지 않습니다."),
   RESERVATION_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "예약이 존재하지 않습니다."),
