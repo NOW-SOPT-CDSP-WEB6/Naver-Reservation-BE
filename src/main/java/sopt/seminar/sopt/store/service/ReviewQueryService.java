@@ -29,13 +29,16 @@ public class ReviewQueryService {
 
     List<Reservation> reservationList = reservationQueryService.findReservationByStore(store);
 
-    if(reservationList.isEmpty()) throw new NotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
+    if (reservationList.isEmpty()) {
+      throw new NotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
+    }
 
     List<ReviewResponse> reviewResponses = reservationList.stream()
         .filter(Reservation::isReviewStatus).map(reservation ->
-            ReviewResponse.of(reservation.getMember().getName(), reservation.getCreatedAt(),
+            ReviewResponse.of(reservation.getId(), reservation.getMember().getName(),
+                reservation.getCreatedAt(),
                 reservation.getContent())).collect(Collectors.toUnmodifiableList());
-    
+
     return ReviewSummaryResponse.of(reviewResponses.size(), reviewResponses);
   }
 
